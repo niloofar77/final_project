@@ -2,11 +2,51 @@
 {% block content %}
     <h3> name:{{ product.name }}</h3>
     <small>{{ product.created }}</small><p> price:{{ product.price }} Toman</p><br/>
-    <img src="{{ product.image.url }}" alt="" width="400px" height="400px">
+    <img src="{{ product.image.url }}" alt="" width="400px" height="400px" >
     <p> description:{{ product.description }}</p><br/><br/>
     <form action="{% url 'cart:cart_add' product.id %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Add to cart">
     </form>
-{% endblock %}
+ <div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.user.full_name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+             <hr>
+        {% endfor %}
+      </div>
+
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

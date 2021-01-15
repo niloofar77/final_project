@@ -1,64 +1,36 @@
 {% load static %}
-   <!-- Nav Bar Start -->
-        <div class="nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light main-nav">
+  <div class="container-fluid">
+      <div class="logo">
+          <a href="index.html">
+              <p style="color:black; font-size:24px;"><img src="{%static 'img/4.jpg'%}" height="60px" alt="Logo">دیوار بهشتی</p>
+                            </a>
+                        </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+             <div class="col-md-3">
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button style="margin-left:10px" class="btn btn-outline-success button-search" type="submit">Search</button>
+      </form>
+    </div>
 
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="{% url 'shop:home'%}" class="nav-item nav-link active">خانه</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ml-auto me-auto mb-2 mb-lg-0">
+          <a href="{% url 'shop:home'%}" class="nav-item nav-link active">خانه</a>
 <!--                            <a href="product-list.html" class="nav-item nav-link">Products</a>-->
 <!--                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>-->
                             <a href="cart.html" class="nav-item nav-link">کارت </a>
                             <a href="{% url 'accounts:my_account'%}" class="nav-item nav-link">حساب کاربری</a>
                              <a class="nav-item nav-link " href="{% url 'accounts:register'%}">ثبت نام</a>
                              <a class="nav-item nav-link " href="{% url 'accounts:login'%}">ورود</a>
+      </ul>
 
-<!--                            <div class="nav-item dropdown">-->
-<!--                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>-->
-<!--                                <div class="dropdown-menu">-->
-<!--                                    <a href="wishlist.html" class="dropdown-item">Wishlist</a>-->
-<!--                                    <a href="login.html" class="dropdown-item">Login & Register</a>-->
-<!--                                    <a href="contact.html" class="dropdown-item">Contact Us</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-                        </div>
-<!--                        <div class="navbar-nav ml-auto">-->
-<!--                            <div class="nav-item dropdown">-->
-<!--                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>-->
-<!--                                <div class="dropdown-menu">-->
-<!--                                    <a href="#" class="dropdown-item">Login</a>-->
-<!--                                    <a href="#" class="dropdown-item">Register</a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                    </div>
-                </nav>
-            </div>
-        </div>
-      <div class="bottom-bar">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
 
-                        <div class="logo">
-                            <a href="index.html">
-                                <p style="color:black; font-size:24px;"><img src="{%static 'img/4.jpg'%}" alt="Logo">دیوار بهشتی</p>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
+    </div>
+            <div class="col-md-2">
                         <div class="user">
                             <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
@@ -70,9 +42,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bottom Bar End -->
 
-        <!-- Nav Bar End -->
+  </div>
+</nav>
