@@ -53,14 +53,13 @@ def view_profile(request, pk=None):
 def edit_profile(request, user_id):
 	user = get_object_or_404(User, id=user_id)
 	if request.method == 'POST':
-		print('aaa')
 		form = EditProfileForm(request.POST, instance=user.profile)
 		if form.is_valid():
 			form.save()
 			user.email = form.cleaned_data['email']
 			user.save()
 			messages.success(request, 'your profile edited successfully', 'success')
-		return render(request, 'shop/home.html')
+		return render(request, 'shop/test.html')
 	else:
 		form = EditProfileForm(instance=user.profile, initial={'email':request.user.email})
 	return render(request, 'accounts/edit_profile.html', {'form':form})

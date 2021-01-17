@@ -21,12 +21,3 @@ class ProductAdmin(admin.ModelAdmin):
 		rows = queryset.update(available=True)
 		self.message_user(request, f'{rows} updated')
 	make_available.short_description = 'make all available'
-# @admin.register(Comment)
-# class CommentAdmin(admin.ModelAdmin):
-# #     list_display = ('name', 'body', 'product', 'created_on', 'active')
-# #     list_filter = ('active', 'created_on')
-# #     search_fields = ('name', 'email', 'body')
-# #     actions = ['approve_comments']
-# #
-# #     def approve_comments(self, request, queryset):
-# #         queryset.update(active=True)

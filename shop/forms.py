@@ -20,7 +20,7 @@ class AddCommentForm(forms.ModelForm):
 			}
 		}
 		help_texts = {
-			'body':'max 400 char'
+			'body':'حداکثر ۴۰۰ کلمه'
 		}
 
 class AddReplyForm(forms.ModelForm):

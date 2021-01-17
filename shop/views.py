@@ -12,7 +12,7 @@ def home(request, slug=None):
 	if slug:
 		category = get_object_or_404(Category, slug=slug)
 		products = products.filter(category=category)
-	return render(request,'shop/product-list.html', {'products':products, 'categories':categories})
+	return render(request,'shop/home.html', {'products':products, 'categories':categories})
 
 
 def product_detail(request, slug):
@@ -21,18 +21,24 @@ def product_detail(request, slug):
 	form = CartAddForm()
 	if request.method == 'POST':
 		comment_form = AddCommentForm(request.POST)
-		print('vnvkn')
 		if comment_form.is_valid():
-			print('vfff')
 			new_comment = comment_form.save(commit=False)
 			new_comment.product = product
 			new_comment.user = request.user
-			print('dddv' + new_comment.user.full_name)
+			# print('dddv' + new_comment.user.full_name)
 			new_comment.save()
+			comment_form = AddCommentForm()
 			messages.success(request, 'you comment submitted successfully')
 
 	else:
-		# comment_form = CommentForm()
 		comment_form = AddCommentForm()
 
-	return render(request, 'shop/product_detail.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form})
+	return render(request, 'shop/product_details.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form})
+
+def favorite_products(request,slug):
+  product=get_object_or_404(Product, slug=slug)
+  if product.favorite.filter(slug=slug).exist():
+    product.favorite.remove(request.user)
+  else:
+    product.favorite.add(request.user)
+    return render(request, 'shop/favorite.html',{'product': product})

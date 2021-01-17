@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>Checkout</h3>
+    <h3 style="margin-left:10px;">Checkout</h3>
 
-    <p>Total: {{ order.get_total_price }}</p><br/>
+    <p style="margin-left:10px;">Total: {{ order.get_total_price }}</p><br/>
 
-    <form action="{% url 'orders:coupon_apply' order.id %}" method="post">
+    <form  style="margin-left:10px;" action="{% url 'orders:coupon_apply' order.id %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Apply">
+        <input style="margin-left:10px;" type="submit" value="Apply">
     </form>
 
     <br/>
-    <a href="{% url 'orders:payment' order.id order.get_total_price %}" class="btn btn-primary">Pay</a>
+    <a  style="margin-left:30px; margin-bottom:30px" href="{% url 'orders:payment' order.id order.get_total_price %}" class="btn btn-primary">Pay</a>
 {% endblock %}
