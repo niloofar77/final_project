@@ -47,7 +47,6 @@ class UserRegistrationForm(forms.Form):
 	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 class EditProfileForm(forms.ModelForm):
-	email = forms.EmailField()
 	class Meta:
 		model = Profile
 		fields = ('bio', 'age')

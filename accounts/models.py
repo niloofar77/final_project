@@ -25,14 +25,14 @@ class User(AbstractBaseUser):
 	def is_staff(self):
 		return self.is_admin
 
+
+
+	# def save_profile(sender, **kwargs):
+	# 	if kwargs['created']:
+	# 		p1 = Profile(user=kwargs['instance'])
+	# 		p1.save()
 class Profile(models.Model):
-		user = models.OneToOneField(User, on_delete=models.CASCADE)
-		bio = models.TextField(null=True, blank=True)
-		age = models.PositiveSmallIntegerField(null=True, blank=True)
-		phone = models.PositiveIntegerField(null=True, blank=True)
-
-
-		def save_profile(sender, **kwargs):
-			if kwargs['created']:
-				p1 = Profile(user=kwargs['instance'])
-				p1.save()
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.TextField(null=True, blank=True)
+	age = models.PositiveSmallIntegerField(null=True, blank=True)
+	phone = models.CharField(null=True, blank=True,max_length=100)

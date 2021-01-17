@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from .forms import UserLoginForm, UserRegistrationForm,EditProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import User
+from .models import User, Profile
 from django.contrib.auth.decorators import login_required
 
 def user_login(request):
@@ -35,6 +35,9 @@ def user_register(request):
 			cd = form.cleaned_data
 			user = User.objects.create_user(cd['email'], cd['full_name'], cd['password'])
 			user.save()
+			profile = Profile.objects.create( user = user)
+			profile.save()
+
 			messages.success(request, 'you registered successfully', 'success')
 			return redirect('shop:home')
 	else:
@@ -42,26 +45,29 @@ def user_register(request):
 	return render(request, 'accounts/register.html', {'form':form})
 
 def view_profile(request, pk=None):
-    if pk:
-        user = User.objects.get(pk=pk)
-    else:
-        user = request.user
-    args = {'user': user}
-    return render(request, 'accounts/profile.html', args)
+	user_res = request.user
+	profile = Profile.objects.get(user = user_res)
+	return render(request, 'accounts/profile.html', {'profile':profile})
 
 @login_required
-def edit_profile(request, user_id):
-	user = get_object_or_404(User, id=user_id)
+def edit_profile(request):
+	print('asss')
+	user = Profile.objects.get(user = request.user)
 	if request.method == 'POST':
-		form = EditProfileForm(request.POST, instance=user.profile)
+		form = EditProfileForm(request.POST, instance=user)
 		if form.is_valid():
 			form.save()
-			user.email = form.cleaned_data['email']
+			# user.email = form.cleaned_data['email']
 			user.save()
 			messages.success(request, 'your profile edited successfully', 'success')
-		return render(request, 'shop/test.html')
+		return render(request, 'accounts/edit_profile.html' , {'form':form})
 	else:
-		form = EditProfileForm(instance=user.profile, initial={'email':request.user.email})
+		if user is  None:
+			print('aaa')
+			new_profile = Profile.objects.create(user = request.user )
+			new_profile.save()
+		else:
+			form = EditProfileForm(instance= user, initial={'email':request.user.email})
 	return render(request, 'accounts/edit_profile.html', {'form':form})
 @login_required
 def show_account(request):

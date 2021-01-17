@@ -1,12 +1,7 @@
 /**********************************/
 /********** General CSS ***********/
 /**********************************/
-body {
-    color: #353535;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    background: #f3f6ff;
-}
+
 
 a {
     color: #FF6F61;
@@ -20,15 +15,7 @@ a:focus {
     text-decoration: none;
 }
 
-h1 {
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 900;
-}
 
-h2 {
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 700;
-}
 
 @media(min-width: 992px) {
     .container-fluid {
@@ -482,7 +469,7 @@ h2 {
     text-align: center;
     color: #ffffff;
     font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Samim', monospace;
     font-weight: 700;
 }
 
