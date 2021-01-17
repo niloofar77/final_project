@@ -1,0 +1,11 @@
+{% block content %}
+<h1>Search Results</h1>
+
+<ul>
+  {% for resault in resaults %}
+    <li>
+      {{ resault.name }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

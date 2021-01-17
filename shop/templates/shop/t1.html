@@ -1,0 +1,21 @@
+
+<h1>HomePage</h1>
+
+<form action="{% url 'shop:searchp' %}" method="get">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="search" id="search exampleInputPassword1" placeholder="Search a Product">
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+</form>
+{% block content %}
+<h1>Search Results</h1>
+
+<ul>
+  {% for product in products %}
+    <li>
+      {{ product.name }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

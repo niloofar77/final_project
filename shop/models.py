@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import AbstractBaseUser
-
+from django.db.models import Q
 
 class Category(models.Model): # categories
 	sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name='scategory', null=True, blank=True)
@@ -66,8 +67,6 @@ class Bookmark(models.Model):
     	ordering = ['product']
     def __str__(self):
         return 'Comment {} by {}'.format(self.product.name, self.product.id)
-
-
 
 
 

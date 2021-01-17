@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from .cart import Cart
 from shop.models import Product
@@ -63,3 +64,9 @@ def bookmark_remove(request, product_id):
 		'bookmarks': Bookmark.objects.filter(user=request.user),
 	}
 	return  render(request,'cart/bookmark.html',bookmarks)
+
+def search_view(request,your_search_query):
+	print('ccvv')
+	resualt=Product.objects.filter(Q(name__icontains=your_search_query))
+	print(resualt)
+	return render(request, 'cart/search.html',{'resaults':resualt})
