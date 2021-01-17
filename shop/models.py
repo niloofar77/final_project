@@ -33,8 +33,6 @@ class Product(models.Model):
 	available = models.BooleanField(default=True)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
-	#
-	# favorite = models.ManyToManyField(settings.AUTH_USER_MODEL,related_name='favorite', blank=True)
 
 	class Meta:
 		ordering = ('name',)
@@ -59,6 +57,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
+
+
+class Bookmark(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='bookmark')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bookmark_user')
+    class Meta:
+    	ordering = ['product']
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.product.name, self.product.id)
+
+
 
 
 

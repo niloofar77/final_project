@@ -3,7 +3,8 @@ from .cart import Cart
 from shop.models import Product
 from .forms import CartAddForm
 from django.views.decorators.http import require_POST
-
+from shop.models import Bookmark
+from django.contrib.auth.models import AbstractBaseUser
 
 def detail(request):
 	cart = Cart(request)
@@ -24,3 +25,36 @@ def cart_remove(request, product_id):
 	product = get_object_or_404(Product, id=product_id)
 	cart.remove(product)
 	return redirect('cart:detail')
+
+
+def bookmark_add(request , product_id):
+
+	product_find = get_object_or_404(Product, id=product_id)
+	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
+	bookmarks = {
+		'bookmarks': Bookmark.objects.filter(user=request.user),
+	}
+	print(bookmark_find)
+	if bookmark_find.exists():
+		print('none')
+		return render(request, 'cart/bookmark.html', bookmarks)
+
+	else:
+
+		new_object=Bookmark.objects.create(product = product_find , user = request.user)
+
+
+	return  render(request,'cart/bookmark.html',bookmarks)
+
+
+def bookmark_remove(request, product_id):
+	bookmarks = {
+		'bookmarks': Bookmark.objects.filter(user=request.user),
+	}
+	product_find = get_object_or_404(Product, id=product_id)
+	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
+	if bookmark_find.exists():
+		bookmark_find.delete()
+	else:
+		print('not found')
+	return  render(request,'cart/bookmark.html',bookmarks)

@@ -27,7 +27,7 @@ def order_create(request):
 
 
 MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
-client = Client('https://www.zarinpal.com/pg/services/WebGate/wsdl')
+# client = Client('https://www.google.com/')
 description = "پرداخت "
 mobile = '09123456789'
 CallbackURL = 'http://localhost:8000/orders/verify/'
@@ -39,7 +39,7 @@ def payment(request,order_id, price):
 	o_id = order_id
 	result = client.service.PaymentRequest(MERCHANT, amount, description, request.user.email, mobile, CallbackURL)
 	if result.Status == 100:
-		return redirect('https://www.zarinpal.com/pg/StartPay/' + str(result.Authority))
+		return redirect('https://www.google.com/' + str(result.Authority))
 	else:
 		return HttpResponse('Error code: ' + str(result.Status))
 

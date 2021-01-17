@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table style="margin-top:30px" class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">User</th>
+
+        <th scope="col">Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bookmark in bookmarks %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ bookmark.product.name }}</td>
+        <td>{{ bookmark.user.full_name }}</td>
+
+    </tr>
+    {% endfor %}
+    <tr>
+        <td>Total</td>
+        <td colspan="4"></td>
+        <td>{{ cart.get_total_price }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<!--    <a  style="margin-left:30px;margin-bottom:30px"href="{% url 'orders:create' %}" class="btn btn-primary">ادامه فرایند خرید</a>-->
+{% endblock %}

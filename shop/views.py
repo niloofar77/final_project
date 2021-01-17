@@ -3,6 +3,7 @@ from .models import Category, Product,Comment
 from cart.forms import CartAddForm
 from .forms import  AddCommentForm, AddReplyForm,CommentForm
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 
 
 def home(request, slug=None):
@@ -42,3 +43,4 @@ def favorite_products(request,slug):
   else:
     product.favorite.add(request.user)
     return render(request, 'shop/favorite.html',{'product': product})
+
