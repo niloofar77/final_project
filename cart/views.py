@@ -48,13 +48,18 @@ def bookmark_add(request , product_id):
 
 
 def bookmark_remove(request, product_id):
+
+	product_find = get_object_or_404(Product, id=product_id)
+	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
+	print(bookmark_find)
+	if bookmark_find.exists():
+		print('aaall')
+
+	else:
+		bookmark_find = Bookmark.objects.filter(product=product_find, user=request.user).delete()
+		bookmark_find.save()
+		print('not found')
 	bookmarks = {
 		'bookmarks': Bookmark.objects.filter(user=request.user),
 	}
-	product_find = get_object_or_404(Product, id=product_id)
-	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
-	if bookmark_find.exists():
-		bookmark_find.delete()
-	else:
-		print('not found')
 	return  render(request,'cart/bookmark.html',bookmarks)
