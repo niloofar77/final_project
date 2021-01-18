@@ -1,21 +1,4 @@
-
-<h1>HomePage</h1>
-
-<form action="{% url 'shop:searchp' %}" method="get">
-    {% csrf_token %}
-    <div class="form-group">
-        <input type="text" class="form-control" name="search" id="search exampleInputPassword1" placeholder="Search a Product">
-    </div>
-    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        <form class="form-inline my-2 my-lg-0" action="{% url 'cart:search' %}">
+    <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
-{% block content %}
-<h1>Search Results</h1>
-
-<ul>
-  {% for product in products %}
-    <li>
-      {{ product.name }}
-    </li>
-  {% endfor %}
-</ul>
-{% endblock content %}

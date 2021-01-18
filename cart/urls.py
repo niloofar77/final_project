@@ -10,5 +10,6 @@ urlpatterns = [
 	path('bookmark_add/<int:product_id>/', views.bookmark_add, name='bookmark_add'),
 	path('bookmark_remove/<int:product.id>/', views.bookmark_remove, name='bookmark_remove'),
 	path('search/<str:your_search_query>', views.search_view, name='search_view'),
+	path('search/', views.search, name='search'),
 
 ]
