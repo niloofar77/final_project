@@ -37,8 +37,8 @@ class UserChangeForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-	email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
-	password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+	email = forms.EmailField(label="ایمیل",widget=forms.EmailInput(attrs={'class':'form-control'}))
+	password = forms.CharField(label="رمز عبور",widget=forms.PasswordInput(attrs={'class':'form-control'}))
 
 
 class UserRegistrationForm(forms.Form):

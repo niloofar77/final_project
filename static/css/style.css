@@ -4,17 +4,17 @@
 
 
 a {
-    color: #FF6F61;
+    color: #353535;
+
 }
 
 a:hover,
 a:active,
 a:focus {
-    color: #353535;
+    color: #FF6F61;
     outline: none;
     text-decoration: none;
 }
-
 
 
 @media(min-width: 992px) {
@@ -301,7 +301,7 @@ a:focus {
 }
 
 .bottom-bar .logo {
-    text-align: left;
+    text-align: right;
     overflow: hidden;
 }
 
@@ -404,7 +404,7 @@ a:focus {
     height: 100%;
     max-height: 400px;
     overflow: hidden;
-    background: #ffffff !important;
+    background: #f3f6ff !important;
 }
 
 .header .navbar-nav {
@@ -2126,8 +2126,8 @@ a:focus {
 .contact .contact-map {
     height: 100%;
     padding: 30px;
-    background: #ffffff;
-    border-bottom: 30px solid #f3f6ff;
+    background: #F5F5F5
+
 }
 
 .contact .contact-info h2 {
@@ -2193,6 +2193,7 @@ a:focus {
     padding: 30px;
     background: #ffffff;
     margin-bottom: 30px;
+   border: 1px solid 	#A9A9A9;
 }
 
 

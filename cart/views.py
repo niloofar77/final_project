@@ -65,14 +65,18 @@ def bookmark_remove(request, product_id):
 	}
 	return  render(request,'cart/bookmark.html',bookmarks)
 
-def search_view(request,your_search_query):
-	print('ccvv')
-	resualt=Product.objects.filter(Q(name__icontains=your_search_query))
-	print(resualt)
-	return render(request, 'cart/search.html',{'resaults':resualt})
+# def search_view(request,your_search_query):
+# 	print('ccvv')
+# 	resualt=Product.objects.filter(Q(name__icontains=your_search_query))
+# 	print(resualt)
+# 	return render(request, 'cart/search.html',{'resaults':resualt})
 def search(request):
  search_post = request.GET.get('search')
  print(search_post)
  resaults= Product.objects.filter(Q(name=search_post))
+ # resaults =Product.objects.filter(Q(category=search_post))
+ # resaults = Product.objects.filter(Q(category =search_post) )
  return render(request, 'cart/search.html', {'resaults': resaults})
-
+# def search_category(request):
+def contact(request):
+  return render(request,'cart/contact.html')

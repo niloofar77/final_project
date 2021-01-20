@@ -1,16 +1,56 @@
-{% block content %}
-<form class="form-inline my-2 my-lg-0" method="GET" action="" >
-  <input class="form-control mr-sm-2" type="search" name="search">
-                                        <button class="fa fa-search" type="submit"> Search </button>
-                                             </form>
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content%}
 
-<h1>Search Results</h1>
 
-<ul>
-  {% for resault in resaults %}
-    <li>
-      {{ resault.name }}
-    </li>
-  {% endfor %}
-</ul>
-{% endblock content %}
+     {% for result in resaults %}
+  <div class="product-view">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="product-item" >
+
+                                    <div class="product-title">
+
+                                          <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
+
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="product-image"  style="width:100%;height:100%;align:center;">
+                                        {% thumbnail result.image "300x300" as img %}
+                                        <img src="{{ img.url }}" class="card-img-top">
+                                        <a href="product-detail.html">
+                                             {% endthumbnail %}
+                                        </a>
+                                    </div>
+
+
+                                    <div  style="text-align: center;" class="product-price">
+                                        <h3 >{{ result.price }}<span>تومان</span></h3>
+<!--                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>-->
+<!--                                            <a href="#" class="btn wishlist">-->
+<!--                                            <i class="fa fa-heart"></i>-->
+<!--                                              <span>(0)</span>-->
+<!--                                                 </a>-->
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>                                                                       {% endfor %}
+         {% endblock %}

@@ -3,19 +3,17 @@
 {% block content%}
         <div class="login">
             <div class="container-fluid">
-                    <div class=" col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div  style="margin-bottom:30px" class="  col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div class="login-form">
-                            <div class="row">
-                  <form action="" method="post">
+                  <form  action="" method="post">
                    {% csrf_token %}
                  {{ form.as_p}}
-                       <div class="col-md-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Keep me signed in</label>
-                                    </div>
-                                </div>
-                      <button type="submit" class="btn btn-primary btn-lg"  value="Login">login</button>
+
+                                       <a class=" nav-link" href="">بازیابی رمز عبور</a>
+
+
+                      <button type="submit" class="btn btn-primary btn-lg"  value="Login"> ورود</button>
+
 
                 </form>
 
@@ -25,6 +23,7 @@
                                           </div>
                                                   </div>
                                                        </div>
+
 
 
 

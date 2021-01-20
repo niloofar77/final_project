@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product,Comment
 from cart.forms import CartAddForm
 from .forms import  AddCommentForm, AddReplyForm,CommentForm
@@ -37,11 +37,3 @@ def product_detail(request, slug):
 		comment_form = AddCommentForm()
 
 	return render(request, 'shop/product_details.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form})
-
-def favorite_products(request,slug):
-  product=get_object_or_404(Product, slug=slug)
-  if product.favorite.filter(slug=slug).exist():
-    product.favorite.remove(request.user)
-  else:
-    product.favorite.add(request.user)
-    return render(request, 'shop/favorite.html',{'product': product})

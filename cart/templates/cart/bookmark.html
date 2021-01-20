@@ -16,10 +16,9 @@
     <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ bookmark.product.name }}</td>
+         <td>{{ bookmark.product.name }}</td>
         <td>{{ bookmark.user.full_name }}</td>
         <td><a    href="{% url 'cart:cart_remove' bookmark.product.id %}">حذف</a></td>
-
-
     </tr>
     {% endfor %}
     <tr>
