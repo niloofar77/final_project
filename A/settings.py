@@ -3,7 +3,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5h*ab5*ls@ufzjeqn2=^&@v8eeas%ot5i&+(9%hx353fut_%b!'
 DEBUG = True
 ALLOWED_HOSTS = []
-
+DEFAULT_FROM_EMAIL = 'sn.mousavi77@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 INSTALLED_APPS = [
     'django.contrib.admin',

@@ -79,8 +79,7 @@ def search(request):
  return render(request, 'cart/search.html', {'resaults': resaults})
 # def search_category(request):
 
-def contact(request):
-  return render(request,'cart/contact.html')
+
 
 def show_cart(request):
   return render(request,'cart/cart2.html')

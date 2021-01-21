@@ -45,7 +45,11 @@ class UserRegistrationForm(forms.Form):
 	email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 	full_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
+class ContactForm(forms.Form):
+	full_name = forms.CharField(max_length=100)
+	email = forms.EmailField(required=True)
+	subject = forms.CharField(max_length=100,required=True)
+	message = forms.CharField(widget=forms.Textarea,required=True)
 class EditProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
@@ -64,13 +68,5 @@ class PhoneLoginForm(forms.Form):
 
 class VerifyCodeForm(forms.Form):
 	code = forms.IntegerField()
-
-
-
-
-
-
-
-
 
 

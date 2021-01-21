@@ -8,22 +8,26 @@
                           <div  style="margin-bottom:30px" class="  col-lg-6">
                         <div  class=" contact-form">
                              <h2>تماس با ما</h2>
-                            <form>
+                            <form action="" method="post">
+                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control" placeholder="نام و نام خوانوادگی" />
+                                         {{ form.as_p }}
+<!--                                        <input type="text" class="form-control" placeholder="نام و نام خوانوادگی" />-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <input type="email" class="form-control" placeholder="ایمیل" />-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="form-group">-->
+<!--                                    <input type="text" class="form-control" placeholder="موضوع" />-->
+<!--                                </div>-->
+<!--                                <div class="form-group">-->
+<!--                                    <textarea class="form-control" rows="5" placeholder="متن پیام"></textarea>-->
+<!--                                </div>-->
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="email" class="form-control" placeholder="ایمیل" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="موضوع" />
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="5" placeholder="متن پیام"></textarea>
-                                </div>
                                 <div><button class="btn" type="submit">ثبت و ارسال</button></div>
+                                </div>
                             </form>
                         </div>
                     </div>

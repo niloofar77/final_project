@@ -36,3 +36,10 @@ class Profile(models.Model):
 	bio = models.TextField(null=True, blank=True)
 	age = models.PositiveSmallIntegerField(null=True, blank=True)
 	phone = models.CharField(null=True, blank=True,max_length=100)
+
+class Contact(models.Model):
+	email = models.EmailField(max_length=100, unique=True)
+	full_name = models.CharField(max_length=100)
+	subject = models.CharField(max_length=100)
+	message = models.TextField(max_length=200)
+

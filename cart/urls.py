@@ -11,7 +11,6 @@ urlpatterns = [
 	path('bookmark_remove/<int:product.id>/', views.bookmark_remove, name='bookmark_remove'),
 	# path('search/<str:your_search_query>', views.search_view, name='search_view'),
 	path('search/', views.search, name='search'),
-	path('contact/',views.contact,name='contact'),
 	path('show/',views.show_cart,name='show'),
 	path('about/',views.about,name='about'),
 
