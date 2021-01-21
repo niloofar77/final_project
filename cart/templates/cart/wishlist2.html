@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+<!-- Wishlist Start -->
+        <div class="wishlist-page">
+            <div class="container-fluid">
+                <div class="wishlist-page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>اسم محصول</th>
+                                            <th>قیمت</th>
+                                            <th> کاربر</th>
+<!--                                            <th>Add to Cart</th>-->
+                                             <th>حذف</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="align-middle">
+                                       {% for bookmark in bookmarks %}
+                                        <tr>
+                                            <td>
+                                   <div class="img">
+                                                    {% thumbnail bookmark.product.image "300x300" as img %}
+                                        <img src="{{ img.url }}" class="card-img-top">
+                                        <a href="product-detail.html">
+                                             {% endthumbnail %}
+                                        </a>
+                                                    <p>{{ bookmark.product.name }}</p>
+                                                </div>
+                                            </td>
+                                            <td>{{ bookmark.product.price }}</td>
+                                            <td>{{ bookmark.user.full_name }}</td>
+
+<!--                                            <td>-->
+<!--&lt;!&ndash;                                                <div class="qty">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <input type="text" value="1">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                                            </td>-->
+<!--                                            <td><button class="btn-cart">Add to Cart</button></td>-->
+                                            <td><a    href="{% url 'cart:cart_remove' bookmark.product.id %}">
+                                                                                           <i class="fa fa-trash"></i>
+
+                                                </a></td>
+                                        </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endblock %}

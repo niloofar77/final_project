@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+        <!-- Cart Start -->
+        <div class="cart-page">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="cart-page-inner">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>اسم محصول</th>
+                                            <th>قیمت</th>
+                                            <th>تعداد</th>
+                                            <th>مجموع</th>
+                                            <th>حذف</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="align-middle">
+                                      {% for item in cart %}
+                                        <tr>
+                                            <td>
+                                                              <div class="img">
+                                                    {% thumbnail item.product.image "300x300" as img %}
+                                        <img src="{{ img.url }}" class="card-img-top">
+                                        <a href="product-detail.html">
+                                             {% endthumbnail %}
+                                        </a>
+                                                    <p>{{ item.product.name }}</p>
+                                                </div>
+                                            </td>
+                                            <td>{{ item.price }}</td>
+                                             <td>{{ item.quantity }}</td>
+                                              <td>{{ item.total_price }}</td>
+                                                 <td><a    href="{% url 'cart:cart_remove' item.product.id %}">
+                                                                                         <i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                        {% endfor %}
+        <td> مجموع</td>
+        <td colspan="3"></td>
+        <td>{{ cart.get_total_price }}</td>
+    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cart-page-inner">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="coupon">
+                                        <input type="text" placeholder="Coupon Code">
+                                        <button>Apply Code</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="cart-summary">
+                                        <div class="cart-content">
+                                            <h1>خلاصه کارت</h1>
+                                            <p>جمع<span>{{ cart.get_total_price }}</span></p>
+                                            <p> هزینه ارسال<span>رایگان</span></p>
+                                        </div>
+                                        <div class="cart-btn">
+                                            <button>کنسل</button>
+                                            <button>ادامه فرایند خرید</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cart End -->
+           {% endblock %}

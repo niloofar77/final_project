@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractBaseUser
 
 def detail(request):
 	cart = Cart(request)
-	return render(request, 'cart/detail.html', {'cart':cart})
+	return render(request, 'cart/cart2.html', {'cart':cart})
 
 @require_POST
 def cart_add(request, product_id):
@@ -38,14 +38,14 @@ def bookmark_add(request , product_id):
 	print(bookmark_find)
 	if bookmark_find.exists():
 		print('none')
-		return render(request, 'cart/bookmark.html', bookmarks)
+		return render(request, 'cart/wishlist2.html', bookmarks)
 
 	else:
 
 		new_object=Bookmark.objects.create(product = product_find , user = request.user)
 
 
-	return  render(request,'cart/bookmark.html',bookmarks)
+	return  render(request,'cart/wishlist2.html',bookmarks)
 
 
 def bookmark_remove(request, product_id):
@@ -78,5 +78,14 @@ def search(request):
  # resaults = Product.objects.filter(Q(category =search_post) )
  return render(request, 'cart/search.html', {'resaults': resaults})
 # def search_category(request):
+
 def contact(request):
   return render(request,'cart/contact.html')
+
+def show_cart(request):
+  return render(request,'cart/cart2.html')
+
+
+def about(request):
+  return render(request,'cart/about.html')
+

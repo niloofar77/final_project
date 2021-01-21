@@ -10,19 +10,17 @@
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-   <div class="col-md-2">
-                        <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
-                                <i class="fa fa-heart"></i>
-                                <span>(0)</span>
+   <div class="col-md-1">
+                        <div  class="user">
+                          <a  href="{% url 'accounts:my_account'%}"><i class="fa fa-user fa-lg"></i></a>
+                            <i class="fas fa-grip-lines-vertical"></i>
+                            <a href="{% url 'cart:show'%}">
+                                <i class="fa fa-shopping-cart fa-lg"></i>
                             </a>
-                            <a href="cart.html" class="btn cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>(0)</span>
-                            </a>
+
                         </div>
                     </div>
-   <div class="col-md-4">
+   <div class="col-md-5">
         <form  style="padding: 20px;" class="form-inline" action="{% url 'cart:search' %}" method="get">
             <input   style="width:70%;text-align:right" class="form-control"  type="search" name="search" placeholder="جست و جو">
             <button  style="margin-left:10px;margin-top:-11px" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
@@ -34,13 +32,14 @@
 
       <ul class="navbar-nav ml-auto me-auto mb-2 mb-lg-0">
 
-          <a href="{% url 'shop:home'%}" class="nav-item nav-link active">خانه</a>
+
 <!--                            <a href="home.html" class="nav-item nav-link">Products</a>-->
 <!--                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>-->
-                            <a href="cart.html" class="nav-item nav-link">کارت </a>
-                            <a href="{% url 'accounts:my_account'%}" class="nav-item nav-link">حساب کاربری</a>
+<!--                            <a href="cart.html" class="nav-item nav-link">کارت </a>-->
+                            <a class="nav-item nav-link " href="{% url 'cart:contact'%}">تماس با ما</a>
                              <a class="nav-item nav-link " href="{% url 'accounts:register'%}">ثبت نام</a>
                              <a class="nav-item nav-link " href="{% url 'accounts:login'%}">ورود</a>
+                             <a href="{% url 'shop:home'%}" class="nav-item nav-link active">خانه</a>
 
       </ul>
           <div  class="col-md-3 logo">
