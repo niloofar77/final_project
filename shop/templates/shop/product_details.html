@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
  <div class="container">
   <div class="row">
        <div class="col-md-8 card mb-4  mt-3 ">
        <div class="card-body">
-    <h3> اسم:{{ product.name }}</h3>
-    <small>{{ product.created }}</small><p> قیمت:{{ product.price }}  تومان</p><br/>
-    <img src="{{ product.image.url }}" alt="" width="400px" height="400px" >
-    <p> توضیحات:{{ product.description }}</p><br/><br/>
+    <h3> {{ product.name }}</h3>
+    <small style="float:right;" >{{ product.created }}</small>
+           <br/>
+           <p style="text-align: right";> قیمت:{{ product.price }}  تومان</p>
+    <img src="{{ product.image.url }}" alt="" width="200px" height="200px" >
+           <br>
+    <p style="text-align: right"> توضیحات:{{ product.description }}</p><br/><br/>
+<!--          <button style="float:right;" type="button" class="btn btn-primary btn-lg"> اطلاعات تماس</button>-->
     <form action="{% url 'cart:cart_add' product.id %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="اضافه کردن به کارت">
+<!--        {{ form }}-->
+<!--        <input type="submit" value="اضافه کردن به کارت">-->
+
     </form>
+                     <div class="card border-secondary mb-3 " style="max-width: 15rem;float:right">
+  <div class="card-body text-dark">
+    <h6  style="text-align:right; margin-top:-10px" class="card-title">شماره تماس</h6>
+            <p  class="card-text" style="text-align:right;margin-top:-10px;">+123-456-7890 <i  class="fas fa-phone-square-alt fa-lg"></i></p>
+  </div>
+                     </div>
+
+
+
            <form  action="{% url 'cart:bookmark_add' product.id %}">
                <button type="submit" class="btn wishlist">
+                   اضافه کردن به علاقه مندی ها
                                             <i class="fa fa-heart"></i>
 
                    </button>

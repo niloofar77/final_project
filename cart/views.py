@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from .cart import Cart
-from shop.models import Product
+from shop.models import Product, Category
 from .forms import CartAddForm
 from django.views.decorators.http import require_POST
 from shop.models import Bookmark
@@ -31,39 +31,31 @@ def cart_remove(request, product_id):
 def bookmark_add(request , product_id):
 
 	product_find = get_object_or_404(Product, id=product_id)
-	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
+	bookmark_find = Bookmark.objects.get(product = product_find , user = request.user)
+	bookmark_find.active =True
+	bookmark_find.save()
 	bookmarks = {
-		'bookmarks': Bookmark.objects.filter(user=request.user),
+		'bookmarks': Bookmark.objects.filter(user=request.user, active =True),
 	}
 	print(bookmark_find)
-	if bookmark_find.exists():
-		print('none')
-		return render(request, 'cart/wishlist2.html', bookmarks)
-
-	else:
-
-		new_object=Bookmark.objects.create(product = product_find , user = request.user)
-
 
 	return  render(request,'cart/wishlist2.html',bookmarks)
 
 
 def bookmark_remove(request, product_id):
 
+	print('bookmark remove')
 	product_find = get_object_or_404(Product, id=product_id)
-	bookmark_find = Bookmark.objects.filter(product = product_find , user = request.user)
-	print(bookmark_find)
-	if bookmark_find.exists():
-		print('aaall')
+	bookmark_find = Bookmark.objects.get(product = product_find , user = request.user)
+	bookmark_find.active = False
+	bookmark_find.save()
 
-	else:
-		bookmark_find = Bookmark.objects.filter(product=product_find, user=request.user).delete()
-		bookmark_find.save()
-		print('not found')
+	print(bookmark_find)
+
 	bookmarks = {
-		'bookmarks': Bookmark.objects.filter(user=request.user),
+		'bookmarks': Bookmark.objects.filter(user=request.user, active =True),
 	}
-	return  render(request,'cart/bookmark.html',bookmarks)
+	return  render(request,'cart/wishlist2.html',bookmarks)
 
 # def search_view(request,your_search_query):
 # 	print('ccvv')
@@ -71,12 +63,11 @@ def bookmark_remove(request, product_id):
 # 	print(resualt)
 # 	return render(request, 'cart/search.html',{'resaults':resualt})
 def search(request):
- search_post = request.GET.get('search')
- print(search_post)
- resaults= Product.objects.filter(Q(name=search_post))
+	search_post = request.GET.get('search')
+	resaults= Product.objects.filter(Q(name=search_post))
  # resaults =Product.objects.filter(Q(category=search_post))
  # resaults = Product.objects.filter(Q(category =search_post) )
- return render(request, 'cart/search.html', {'resaults': resaults})
+	return render(request, 'cart/search.html', {'resaults': resaults})
 # def search_category(request):
 
 
@@ -88,3 +79,13 @@ def show_cart(request):
 def about(request):
   return render(request,'cart/about.html')
 
+def searchcategory(request,category_id):
+	# search_post = request.GET.get('category')
+	category = Category.objects.get(id = category_id)
+	resaults = Product.objects.filter(Q(category =category))
+	print(resaults)
+
+	return  render(request , 'cart/search.html' ,  {'resaults': resaults})
+def searchbrand(request , brand):
+	resaults = Product.objects.filter(Q(brand = brand))
+	return  render(request , 'cart/search.html' ,  {'resaults': resaults})

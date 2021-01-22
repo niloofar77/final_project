@@ -37,3 +37,9 @@ def product_detail(request, slug):
 		comment_form = AddCommentForm()
 
 	return render(request, 'shop/product_details.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form})
+def searchcategory(request):
+	search_post = request.GET.get('category')
+	resaults = Product.category.objects.filter(Q(category=search_post))
+	print(resaults)
+
+	return  render(request , 'cart/search.html' ,  {'resaults': resaults})

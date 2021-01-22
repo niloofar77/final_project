@@ -132,7 +132,11 @@
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a style="text-align:right" class="nav-link" href="#">{{ category.name }}</a>
+<!--                                        <form action="{ % url 'cart:search'   %}" method="post">-->
+<!--                                            <button id="category" >-->
+                                        <a style="text-align:right" href="cart/search/{{category.id}}" class="nav-link">{{ category.name }}</a>
+<!--                                                </button>-->
+<!--                                            </form>-->
                                     </li>
                                 </ul>
                             </nav>
@@ -145,7 +149,8 @@
                             {% for product in products %}
                               <nav class="navbar bg-light">
                             <ul>
-                                <li><a href="#">{{ product.brand }}</a><span>(45)</span></li>
+                                <li><a href="cart/search/brand/{{product.brand}}">{{ product.brand }}</a>
+                                </li>
                             </ul>
                                   </nav>
                             {% endfor %}

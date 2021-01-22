@@ -91,3 +91,6 @@ def contact(request):
 	else:
 		form = ContactForm()
 	return render(request, 'accounts/contact2.html', {'form':form})
+
+def forget_Password(request):
+	return render(request, 'accounts/forget_password.html')

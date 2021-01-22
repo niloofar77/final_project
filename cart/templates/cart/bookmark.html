@@ -18,7 +18,10 @@
         <td>{{ bookmark.product.name }}</td>
          <td>{{ bookmark.product.name }}</td>
         <td>{{ bookmark.user.full_name }}</td>
-        <td><a    href="{% url 'cart:cart_remove' bookmark.product.id %}">حذف</a></td>
+        <form action="{% url 'cart:bookmark_remove' bookmark.product.id %}">
+                <td><a   >حذف</a></td>
+        </form>
+
     </tr>
     {% endfor %}
     <tr>
