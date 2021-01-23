@@ -85,6 +85,7 @@ def contact(request):
 				message = form.cleaned_data['message']
 				try:
 					send_mail(subject, email, message, ['sn.mousavi77@gmail.com'])
+					form= ContactForm()
 				except BadHeaderError:
 					return HttpResponse('Invalid header found.')
 			messages.success(request, 'your profile edited successfully', 'success')

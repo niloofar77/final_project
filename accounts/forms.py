@@ -42,14 +42,14 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.Form):
-	email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-	full_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+	email = forms.EmailField(label="ایمیل",widget=forms.EmailInput(attrs={'class': 'form-control'}))
+	full_name = forms.CharField(label="نام و نام خانوادگی",widget=forms.TextInput(attrs={'class':'form-control'}))
+	password = forms.CharField(label="رمز عبور",widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 class ContactForm(forms.Form):
-	full_name = forms.CharField(max_length=100)
-	email = forms.EmailField(required=True)
-	subject = forms.CharField(max_length=100,required=True)
-	message = forms.CharField(widget=forms.Textarea,required=True)
+	full_name = forms.CharField(label="نام و نام خانوادگی",widget=forms.TextInput(attrs={'class':'form-control'}))
+	email = forms.EmailField(label="ایمیل",required=True,widget=forms.EmailInput(attrs={'class': 'form-control'}))
+	subject = forms.CharField(label="موضوع",required=True,widget=forms.TextInput(attrs={'class':'form-control'}))
+	message = forms.CharField(label="متن پیام",widget=forms.Textarea(attrs={'class':'form-control'}))
 class EditProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile

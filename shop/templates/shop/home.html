@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load shop_extras %}
 {% block content%}
 
         
@@ -27,31 +28,31 @@
                                         <div class="col-md-4">
                                             <div class="product-short">
                                                 <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">Newest</a>
-                                                        <a href="#" class="dropdown-item">Popular</a>
-                                                        <a href="#" class="dropdown-item">Most sale</a>
-                                                    </div>
+<!--                                                    <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>-->
+<!--                                                    <div class="dropdown-menu dropdown-menu-right">-->
+<!--                                                        <a href="#" class="dropdown-item">Newest</a>-->
+<!--                                                        <a href="#" class="dropdown-item">Popular</a>-->
+<!--                                                        <a href="#" class="dropdown-item">Most sale</a>-->
+<!--                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="product-price-range">
                                                 <div class="dropdown">
-                                                    <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">$0 to $50</a>
-                                                        <a href="#" class="dropdown-item">$51 to $100</a>
-                                                        <a href="#" class="dropdown-item">$101 to $150</a>
-                                                        <a href="#" class="dropdown-item">$151 to $200</a>
-                                                        <a href="#" class="dropdown-item">$201 to $250</a>
-                                                        <a href="#" class="dropdown-item">$251 to $300</a>
-                                                        <a href="#" class="dropdown-item">$301 to $350</a>
-                                                        <a href="#" class="dropdown-item">$351 to $400</a>
-                                                        <a href="#" class="dropdown-item">$401 to $450</a>
-                                                        <a href="#" class="dropdown-item">$451 to $500</a>
-                                                    </div>
+<!--                                                    <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>-->
+<!--                                                    <div class="dropdown-menu dropdown-menu-right">-->
+<!--                                                        <a href="#" class="dropdown-item">$0 to $50</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$51 to $100</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$101 to $150</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$151 to $200</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$201 to $250</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$251 to $300</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$301 to $350</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$351 to $400</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$401 to $450</a>-->
+<!--                                                        <a href="#" class="dropdown-item">$451 to $500</a>-->
+<!--                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -67,13 +68,14 @@
 
                                           <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
 
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+
+<!--                                        <div class="ratting">-->
+<!--                                            <i class="fa fa-star"></i>-->
+<!--                                            <i class="fa fa-star"></i>-->
+<!--                                            <i class="fa fa-star"></i>-->
+<!--                                            <i class="fa fa-star"></i>-->
+<!--                                            <i class="fa fa-star"></i>-->
+<!--                                        </div>-->
 
                                     </div>
                                     <div class="product-image"  style="width:100%;height:100%;align:center;">
@@ -86,7 +88,7 @@
 
 
                                     <div  style="text-align: center;" class="product-price">
-                                        <h3 >{{ product.price }}<span>تومان</span></h3>
+                               <h3 > <span>تومان</span>{{ product.price|persian_int  }}</h3>
 <!--                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>-->
 <!--                                            <a href="#" class="btn wishlist">-->
 <!--                                            <i class="fa fa-heart"></i>-->

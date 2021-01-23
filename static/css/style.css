@@ -1183,8 +1183,9 @@ a:focus {
 }
 
 .product-detail .tab-content {
-    background: #ffffff;
+    background: #ECF0F1 ;
     padding: 25px 15px 15px 15px;
+
 }
 
 .product-detail .tab-content ul {
@@ -1256,7 +1257,7 @@ a:focus {
     padding: 0 15px;
     color: #FF6F61;
     background: #ffffff;
-    border: 1px solid #FF6F61;
+    border: 1px solid  block;
     border-radius: 4px;
     margin-bottom: 15px;
     transition: all .3s;

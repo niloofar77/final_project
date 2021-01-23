@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from persian import persian
+
+from accounts.models import Profile
 from .models import Category, Product,Comment
 from cart.forms import CartAddForm
 from .forms import  AddCommentForm, AddReplyForm,CommentForm
@@ -20,6 +23,7 @@ def home(request, slug=None):
 
 def product_detail(request, slug):
 	product = get_object_or_404(Product, slug=slug)
+	# profile = Profile.objects.get(user = product.)
 	comments = Comment.objects.filter(product=product)
 	form = CartAddForm()
 	if request.method == 'POST':

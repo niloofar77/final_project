@@ -6,17 +6,26 @@
   <div class="row">
        <div class="col-md-8 card mb-4  mt-3 ">
     <div class="card-body">
-    <h1>Profile</h1>
-    <p>Username: {{ user }}</p>
-    <p>Full name: {{ user.full_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>bio: {{ profile.bio }}</p>
-    <p>Phone: {{ profile.phone }}</p>
-     <p>Age: {{profile.age}}</p>
+    <h1>پروفایل</h1>
+    <p>نام کاربری:
+        {{ user }}</p>
+    <p>نام و نام خانوادگی:
+        {{ user.full_name }}</p>
+    <p>ایمیل:
+        {{ user.email }}</p>
+    <p>بیو:
+        {{ profile.bio }}</p>
+    <p> تلفن:
+        {{ profile.phone }}
+        </p>
+     <p>سن:
+         {{profile.age}}</p>
     {% if profile.image %}
     <img src="{{ user.userprofile.image.url }}" width="240">
     {% endif %}
+          <a href="{% url 'accounts:edit_profile1'%}"class="btn btn-primary" type="submit">ویرایش اطلاعات</a>
         </div>
+
 </div>
   </div>
 </div>

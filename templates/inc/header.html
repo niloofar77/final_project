@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <div class="col-md-1">
                         <div  class="user">
-                          <a  href="{% url 'accounts:my_account'%}"><i class="fa fa-user fa-lg"></i></a>
+                          <a  href="./accounts/profile"><i class="fa fa-user fa-lg"></i></a>
                             <i class="fas fa-grip-lines-vertical"></i>
                             <a href="{% url 'cart:show'%}">
                                 <i class="fa fa-shopping-cart fa-lg"></i>
@@ -37,9 +37,11 @@
 <!--                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>-->
 <!--                            <a href="cart.html" class="nav-item nav-link">کارت </a>-->
                             <a class="nav-item nav-link " href="{% url 'accounts:contact'%}">تماس با ما</a>
-                             <a class="nav-item nav-link " href="{% url 'accounts:register'%}">ثبت نام</a>
-                             <a class="nav-item nav-link " href="{% url 'accounts:login'%}">ورود</a>
                              <a href="{% url 'shop:home'%}" class="nav-item nav-link active">خانه</a>
+                             <a class="nav-item nav-link " href="{% url 'accounts:login'%}">ورود</a>
+                             <a class="nav-item nav-link " href="{% url 'accounts:register'%}">ثبت نام</a>
+          
+
 
       </ul>
           <div  class="col-md-3 logo">

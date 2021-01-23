@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load shop_extras %}
 {% block content %}
  <div class="container">
   <div class="row">
@@ -8,7 +9,7 @@
     <h3> {{ product.name }}</h3>
     <small style="float:right;" >{{ product.created }}</small>
            <br/>
-           <p style="text-align: right";> قیمت:{{ product.price }}  تومان</p>
+           <p style="text-align: right";> قیمت:{{  product.price|persian_int  }}  تومان</p>
     <img src="{{ product.image.url }}" alt="" width="200px" height="200px" >
            <br>
     <p style="text-align: right"> توضیحات:{{ product.description }}</p><br/><br/>
@@ -22,15 +23,17 @@
                      <div class="card border-secondary mb-3 " style="max-width: 15rem;float:right">
   <div class="card-body text-dark">
     <h6  style="text-align:right; margin-top:-10px" class="card-title">شماره تماس</h6>
-            <p  class="card-text" style="text-align:right;margin-top:-10px;">+123-456-7890 <i  class="fas fa-phone-square-alt fa-lg"></i></p>
-  </div>
+            <p  class="card-text" style="text-align:right;margin-top:-10px;">
+                {{ 23479191|persian_int}}
+
+                <i  class="fas fa-phone-square-alt fa-lg"></i></p>
+
                      </div>
 
+  </div>
 
-
-           <form  action="{% url 'cart:bookmark_add' product.id %}">
-               <button type="submit" class="btn wishlist">
-                   اضافه کردن به علاقه مندی ها
+           <form  action="{% url 'cart:bookmark_add' product.id %}" >
+               <button type="submit" class="btn wishlist    ">
                                             <i class="fa fa-heart"></i>
 
                    </button>
@@ -46,7 +49,7 @@
     <div class="col-md-8 card mb-4  mt-3 ">
       <div class="card-body">
         <!-- comments -->
-        <h2>{{ comments.count }} نظرات</h2>
+        <h2>{{ comments.count|persian_int  }} نظرات</h2>
 
         {% for comment in comments %}
         <div class="comments" style="padding: 10px;">

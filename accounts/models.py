@@ -33,7 +33,7 @@ class User(AbstractBaseUser):
 	# 		p1.save()
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	bio = models.TextField(null=True, blank=True)
+	bio = models.TextField( null=True, blank=True)
 	age = models.PositiveSmallIntegerField(null=True, blank=True)
 	phone = models.CharField(null=True, blank=True,max_length=100)
 
