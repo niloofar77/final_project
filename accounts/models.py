@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from .managers import MyUserManager
-
-
+from ckeditor_uploader.fields import RichTextUploadingField
 class User(AbstractBaseUser):
 	email = models.EmailField(max_length=100, unique=True)
 	full_name = models.CharField(max_length=100)
@@ -43,3 +42,16 @@ class Contact(models.Model):
 	subject = models.CharField(max_length=100)
 	message = models.TextField(max_length=200)
 
+class FAQ(models.Model):
+ STATUS = (
+        ('True', 'True'),
+        ('False', 'False'),
+    )
+ ordernumber = models.IntegerField()
+ question = models.CharField(max_length=200)
+ answer = models.TimeField()
+ status=models.CharField(max_length=10, choices=STATUS)
+ create_at=models.DateTimeField(auto_now_add=True)
+ update_at=models.DateTimeField(auto_now=True)
+ def __str__(self):
+  return self.question

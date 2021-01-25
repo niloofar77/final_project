@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .forms import UserLoginForm, UserRegistrationForm,EditProfileForm,ContactForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib import messages
-from .models import User, Profile,Contact
+from .models import User, Profile,Contact,FAQ
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, get_connection
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.forms import PasswordChangeForm
 def user_login(request):
 	if request.method == 'POST':
 		form = UserLoginForm(request.POST)
@@ -88,10 +89,30 @@ def contact(request):
 					form= ContactForm()
 				except BadHeaderError:
 					return HttpResponse('Invalid header found.')
-			messages.success(request, 'your profile edited successfully', 'success')
+			messages.success(request, 'message sent!', 'success')
 	else:
 		form = ContactForm()
 	return render(request, 'accounts/contact2.html', {'form':form})
 
-def forget_Password(request):
-	return render(request, 'accounts/forget_password.html')
+def user_password(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(request.user, request.POST)
+		if form.is_valid():
+			if form.is_valid():
+				user = form.save()
+				update_session_auth_hash(request, user)  # Important!
+				messages.success(request, 'Your password was successfully updated!')
+				return HttpResponseRedirect('shop/home')
+			else:
+				messages.error(request, 'Please correct the error below.<br>' + str(form.errors))
+				return HttpResponseRedirect('accounts/password')
+	else:
+		form = PasswordChangeForm(request.user)
+		return render(request, 'accounts/password_reset.html', {'form': form,  # 'category': category
+													  })
+
+def faq(request):
+	print('pppp')
+	faq = FAQ.objects.filter(status="True").order_by("ordernumber")
+	print(faq)
+	return render(request, 'accounts/faq.html',  {'faq':faq})

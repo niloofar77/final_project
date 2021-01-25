@@ -31,8 +31,7 @@ def cart_remove(request, product_id):
 def bookmark_add(request , product_id):
 
 	product_find = get_object_or_404(Product, id=product_id)
-	bookmark_find = Bookmark.objects.ge
-	t(product = product_find , user = request.user)
+	bookmark_find = Bookmark.objects.get(product = product_find , user = request.user)
 	bookmark_find.active =True
 	bookmark_find.save()
 	bookmarks = {
@@ -66,10 +65,7 @@ def bookmark_remove(request, product_id):
 def search(request):
 	search_post = request.GET.get('search')
 	resaults= Product.objects.filter(Q(name=search_post))
- # resaults =Product.objects.filter(Q(category=search_post))
- # resaults = Product.objects.filter(Q(category =search_post) )
 	return render(request, 'cart/search.html', {'resaults': resaults})
-# def search_category(request):
 
 
 
@@ -85,8 +81,8 @@ def searchcategory(request,category_id):
 	category = Category.objects.get(id = category_id)
 	resaults = Product.objects.filter(Q(category =category))
 	print(resaults)
-
 	return  render(request , 'cart/search.html' ,  {'resaults': resaults})
+
 def searchbrand(request , brand):
 	resaults = Product.objects.filter(Q(brand = brand))
 	return  render(request , 'cart/search.html' ,  {'resaults': resaults})

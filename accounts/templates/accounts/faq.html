@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+
+    <!-- /BREADCRUMB -->
+
+    <!-- section -->
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                    <p>aaaa</p>
+                    {% for rs in faq %}
+                        <h3>{{ rs.question }}</h3>
+                        <div>
+                            <p>
+                                {{ rs.answer | safe }}
+                            </p>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    <!-- /section -->
+
+{% endblock %}

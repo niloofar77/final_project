@@ -13,6 +13,16 @@
     <img src="{{ product.image.url }}" alt="" width="200px" height="200px" >
            <br>
     <p style="text-align: right"> توضیحات:{{ product.description }}</p><br/><br/>
+<!--           <p> {{ product.avaregereview}}</p>-->
+            <div class="product-rating">
+                                    <i  style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700; "class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;"class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                    {{ product.avaregereview |stringformat:".2f"}}
+                                </div>
+           <br>
 <!--          <button style="float:right;" type="button" class="btn btn-primary btn-lg"> اطلاعات تماس</button>-->
     <form action="{% url 'cart:cart_add' product.id %}" method="post">
         {% csrf_token %}
@@ -59,6 +69,7 @@
            (  {{ comment.created_on }})
             </span>
           </p>
+            <p> {{ comment.rate | linebreaks }}</p>
           {{ comment.body | linebreaks }}
         </div>
              <hr>

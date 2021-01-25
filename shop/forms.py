@@ -5,14 +5,16 @@ from django import forms
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'email', 'body')
+        fields = ('name', 'email', 'body','rate')
 
 class AddCommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
-		fields = ('body',)
+		fields = ('body','rate')
 		widgets = {
-			'body': forms.Textarea(attrs={'class':'form-control'})
+			'body': forms.Textarea(attrs={'class':'form-control'}),
+			'rate':forms.TextInput(attrs={'min':1,'max': '5','type': 'number'})
+
 		}
 		error_messages = {
 			'body':{

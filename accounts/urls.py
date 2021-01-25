@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+from django.contrib.auth import views as auth_views
 
 
 app_name = 'accounts'
@@ -11,8 +12,7 @@ urlpatterns = [
     path('profile/', views.view_profile, name='view_profile_with_pk'),
 	path('my_account',views.show_account,name='my_account'),
 	path('contact/',views.contact,name='contact'),
-	# path('forget_password/',views.forget_Password,name='forget_password'),
-	# path('')
-
+	path('password/', views.user_password, name='user_password'),
+	path('faq/', views.faq, name='faq'),
 
 ]

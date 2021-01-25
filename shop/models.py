@@ -1,10 +1,11 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from django.db.models import Avg
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import AbstractBaseUser
 from django.db.models import Q
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 class Category(models.Model): # categories
 	sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name='scategory', null=True, blank=True)
 	is_sub = models.BooleanField(default=False)
@@ -36,7 +37,13 @@ class Product(models.Model):
 	updated = models.DateTimeField(auto_now=True)
 	deleted = models.BooleanField(default= True)
 
-
+	def avaregereview(self):
+		reviews = Comment.objects.filter(product=self).aggregate(avarage=Avg('rate'))
+		print(reviews)
+		avg = 0
+		if reviews["avarage"] is not None:
+			avg = float(reviews["avarage"])
+		return avg
 	class Meta:
 		ordering = ('name',)
 
@@ -52,6 +59,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
+    rate = models.PositiveIntegerField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
 

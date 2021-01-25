@@ -5,8 +5,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 DEFAULT_FROM_EMAIL = 'sn.mousavi77@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-# EMAIL_FILE_PATH =os.path.join(BASE_DIR, 'sent_emails')
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
