@@ -16,6 +16,11 @@ class AddCommentForm(forms.ModelForm):
 			'rate':forms.TextInput(attrs={'min':1,'max': '5','type': 'number'})
 
 		}
+		labels = {
+			'body': ('متن'),
+			'rate': ('امتیاز')
+		}
+
 		error_messages = {
 			'body':{
 				'required': 'این فیلد اجباری است',

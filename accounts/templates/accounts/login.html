@@ -11,8 +11,12 @@
 
 <!--                                       <a class=" nav-link" href="">بازیابی رمز عبور</a>-->
 
-
+                     <a  style="margin-top:20px;"href="{% url 'accounts:user_password'%}">بازیابی رمز عبور</a>
+                      <br>
+                      <br>
                       <button type="submit" class="btn btn-primary btn-lg"  value="Login"> ورود</button>
+
+                       <p style="margin-top:20px;"> حساب کاربری ندارید؟<a href="{% url 'accounts:register'%}">ثبت نام کنید</a></p>
 
 
                 </form>

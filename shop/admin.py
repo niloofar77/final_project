@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Category, Product,Comment,Bookmark
+from .models import Category, Product,Comment,Bookmark,Images
 admin.site.register(Comment)
 admin.site.register(Bookmark)
+admin.site.register(Images)
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ('name', 'slug')

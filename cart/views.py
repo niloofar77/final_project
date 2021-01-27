@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractBaseUser
 
 def detail(request):
 	cart = Cart(request)
-	return render(request, 'cart/detail.html', {'cart':cart})
+	return render(request, 'cart/cart2.html', {'cart':cart})
 
 @require_POST
 def cart_add(request, product_id):

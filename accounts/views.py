@@ -22,7 +22,7 @@ def user_login(request):
 				messages.error(request, 'username or password is wrong', 'danger')
 	else:
 		form = UserLoginForm()
-	return render(request, 'accounts/login2.html', {'form':form})
+	return render(request, 'accounts/login.html', {'form':form})
 
 
 def user_logout(request):

@@ -51,7 +51,7 @@ class Product(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse('shop:product_detail', args=[self.slug,])
+		return reverse('shop:product_detail', args=[self.slug])
 
 class Comment(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='comments')
@@ -79,5 +79,11 @@ class Bookmark(models.Model):
     	return 'Comment {} by {}'.format(self.product.name, self.product.id)
 
 
+class Images(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    title = models.CharField(max_length=50,blank=True)
+    image = models.ImageField(blank=True, upload_to='images/')
 
+    def __str__(self):
+        return self.title;
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from persian import persian
 
 from accounts.models import Profile
-from .models import Category, Product,Comment
+from .models import Category, Product, Comment, Images
 from cart.forms import CartAddForm
 from .forms import  AddCommentForm, AddReplyForm,CommentForm
 from django.contrib import messages
@@ -25,6 +25,7 @@ def product_detail(request, slug):
 	product = get_object_or_404(Product, slug=slug)
 	# profile = Profile.objects.get(user = product.)
 	comments = Comment.objects.filter(product=product)
+	images = Images.objects.filter(product=product)
 	form = CartAddForm()
 	if request.method == 'POST':
 		comment_form = AddCommentForm(request.POST)
@@ -40,7 +41,7 @@ def product_detail(request, slug):
 	else:
 		comment_form = AddCommentForm()
 
-	return render(request, 'shop/product_detailsv2.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form})
+	return render(request, 'shop/product_detailsv2.html',{'product': product, 'form': form, 'comments': comments, 'comment_form': comment_form, 'images': images})
 # def searchcategory(request):
 # 	search_post = request.GET.get('category')
 # 	resaults = Product.category.objects.filter(Q(category=search_post))
