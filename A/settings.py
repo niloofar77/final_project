@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'sorl.thumbnail',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -106,3 +108,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
 os.path.join(BASE_DIR, 'static')
     ]
+CKEDITOR_UPLOAD_PATH = "uploads/"

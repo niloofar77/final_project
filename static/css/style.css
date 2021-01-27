@@ -1034,7 +1034,8 @@ a:focus {
 
 .product-detail .product-detail-top {
     padding: 0;
-    background: #ffffff;
+    background: #F5F5F5;
+
 }
 
 .product-detail .product-slider-single img {
@@ -1043,11 +1044,11 @@ a:focus {
 
 .product-detail .product-slider-single-nav {
     margin: 15px 30px 30px 30px;
-    border: 3px double #FF6F61;
+    border: 3px double black;
 }
 
 .product-detail .product-slider-single-nav .slider-nav-img {
-    border-right: 1px solid #FF6F61;
+    border-right: 1px solid #ECF0F1;
     overflow: hidden;
 }
 
@@ -1091,7 +1092,7 @@ a:focus {
 }
 
 .product-detail .product-content .ratting i {
-    color: #FF6F61;
+    color: #ECF0F1;
     font-size: 16px;
 }
 

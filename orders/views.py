@@ -26,10 +26,13 @@ def order_create(request):
 	return redirect('orders:detail', order.id)
 
 
-MERCHANT = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
-# client = Client('https://www.google.com/')
+# ZARINPAL_MERCHANT = 'test'
+# ZARINPAL_PAYMENT_BASE_URL = 'https://wwww.sandbox.zarinpal.com'
+MERCHANT = 'd5d4c08c-c912-11e9-821b-000c295eb8fc'
+client = Client('https://sandbox.zarinpal.com/pg/services/WebGate/wsdl')
+# client = Client(ZARINPAL_PAYMENT_BASE_URL)
 description = "پرداخت "
-mobile = '09123456789'
+mobile = '09022002276'
 CallbackURL = 'http://localhost:8000/orders/verify/'
 
 @login_required
@@ -39,7 +42,7 @@ def payment(request,order_id, price):
 	o_id = order_id
 	result = client.service.PaymentRequest(MERCHANT, amount, description, request.user.email, mobile, CallbackURL)
 	if result.Status == 100:
-		return redirect('https://www.google.com/' + str(result.Authority))
+		return redirect('https://sandbox.zarinpal.com/pg/StartPay/' + str(result.Authority))
 	else:
 		return HttpResponse('Error code: ' + str(result.Status))
 

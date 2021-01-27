@@ -23,9 +23,11 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('email',)
 	ordering = ('email',)
 	filter_horizontal = ()
-
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ['question', 'answer','ordernumber','status']
+    list_filter = ['status']
 
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 admin.site.register(Profile)
-admin.site.register(FAQ)
+admin.site.register(FAQ,FAQAdmin)

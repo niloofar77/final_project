@@ -112,7 +112,7 @@ def user_password(request):
 													  })
 
 def faq(request):
-	print('pppp')
+	# print('pppp')
 	faq = FAQ.objects.filter(status="True").order_by("ordernumber")
-	print(faq)
+	# print(faq)
 	return render(request, 'accounts/faq.html',  {'faq':faq})

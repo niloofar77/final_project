@@ -13,8 +13,6 @@ urlpatterns = [
 	path('search/', views.search, name='search'),
 	path('search/<int:category_id>' , views.searchcategory , name = 'searchcategory'),
 	path('search/brand/<str:brand>', views.searchbrand, name='searchcategory'),
-
-	path('show/',views.show_cart,name='show'),
 	path('about/',views.about,name='about'),
 
 ]

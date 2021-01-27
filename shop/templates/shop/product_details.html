@@ -20,27 +20,27 @@
                                     <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
                                     <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
                                     <i style="color:#FFD700;"class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
-                                    {{ product.avaregereview |stringformat:".2f"}}
+                <small>({{ product.avaregereview |stringformat:".2f"}})</small>
                                 </div>
            <br>
 <!--          <button style="float:right;" type="button" class="btn btn-primary btn-lg"> اطلاعات تماس</button>-->
     <form action="{% url 'cart:cart_add' product.id %}" method="post">
         {% csrf_token %}
-<!--        {{ form }}-->
-<!--        <input type="submit" value="اضافه کردن به کارت">-->
+        {{ form }}
+        <input type="submit" value="اضافه کردن به کارت">
 
     </form>
-                     <div class="card border-secondary mb-3 " style="max-width: 15rem;float:right">
-  <div class="card-body text-dark">
-    <h6  style="text-align:right; margin-top:-10px" class="card-title">شماره تماس</h6>
-            <p  class="card-text" style="text-align:right;margin-top:-10px;">
-                {{ 23479191|persian_int}}
+           <div class="card border-secondary mb-3 " style="max-width: 15rem;float:right">
+             <div class="card-body text-dark">
+                  <h6  style="text-align:right; margin-top:-10px" class="card-title">شماره تماس</h6>
+                     <p  class="card-text" style="text-align:right;margin-top:-10px;">
+                     {{ 23479191|persian_int}}
 
-                <i  class="fas fa-phone-square-alt fa-lg"></i></p>
+                        <i  class="fas fa-phone-square-alt fa-lg"></i></p>
 
                      </div>
 
-  </div>
+                     </div>
 
            <form  action="{% url 'cart:bookmark_add' product.id %}" >
                <button type="submit" class="btn wishlist    ">
@@ -69,11 +69,20 @@
            (  {{ comment.created_on }})
             </span>
           </p>
-            <p> {{ comment.rate | linebreaks }}</p>
+                 {{ comment.rate |stringformat:".2f"}}
+                  <div class="product-rating">
+                                    <i  style="color:#FFD700;" class="fa fa-star{% if comment.rate < 1%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700; "class="fa fa-star{% if comment.rate < 2%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if comment.rate < 3%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if comment.rate < 4%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;"class="fa fa-star{% if comment.rate < 5%}-o empty{% endif%}"></i>
+
+                                </div>
           {{ comment.body | linebreaks }}
+
         </div>
              <hr>
-        {% endfor %}
+             {% endfor %}
       </div>
 
     </div>

@@ -1,7 +1,10 @@
+
+
 {% extends 'base.html' %}
 
 {% block content %}
-<table style="margin-top:30px" class="table table-dark">
+
+<table class="table table-dark">
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -20,7 +23,7 @@
         <td>{{ item.quantity }}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.total_price }}</td>
-        <td><a    href="{% url 'cart:cart_remove' item.product.id %}">حذف</a></td>
+        <td><a href="{% url 'cart:cart_remove' item.product.id %}">Remove</a></td>
     </tr>
     {% endfor %}
     <tr>
@@ -31,5 +34,7 @@
     </tbody>
 </table>
 
-    <a  style="margin-left:30px;margin-bottom:30px"href="{% url 'orders:create' %}" class="btn btn-primary">ادامه فرایند خرید</a>
+    <a href="{% url 'orders:create' %}" class="btn btn-primary">Checkout</a>
+
 {% endblock %}
+

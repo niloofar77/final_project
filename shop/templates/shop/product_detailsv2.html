@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_extras %}
+{% block content %}
+        <div class="product-detail">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="product-detail-top">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                        <img src="{{ product.image.url }}" alt="" width="200px" height="200px" >
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="product-content">
+                                      <h2>{{ product.name }}</h2>
+                                        <small style="float:right;" >{{ product.created }}</small>
+                                    <div class="product-rating">
+                                    <i  style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700; "class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;" class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                    <i style="color:#FFD700;"class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                 <small>({{ product.avaregereview |stringformat:".2f"}})</small>
+                                </div>
+                                        <h4 style="text-align: right";> قیمت:{{  product.price|persian_int  }}  تومان</h4>
+                                       <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                    {% csrf_token %}
+                                            {{ form }}
+                               <input type="submit" value="اضافه کردن به کارت">
+
+                                              </form>
+                                        <div class="card border-secondary mb-3 " style="max-width: 15rem;float:right">
+             <div class="card-body text-dark">
+                  <h6  style="text-align:right; margin-top:-10px" class="card-title">شماره تماس</h6>
+                     <p  class="card-text" style="text-align:right;margin-top:-10px;">
+                     {{ 23479191|persian_int}}
+
+                        <i  class="fas fa-phone-square-alt fa-lg"></i></p>
+
+                     </div>
+
+                     </div>
+<!--                                        <div class="action">-->
+<!--                                            <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>-->
+<!--                                            <a  type="submit" class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row product-detail-bottom">
+                            <div class="col-lg-12">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="pill" href="#description"> توضیحات</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="pill" href="#reviews">({{ comments.count|persian_int  }}) نظرات</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="description" class="container tab-pane active">
+                                        <p style="text-align:right;">{{ product.description }}</p>
+                                    </div>
+                                    <div id="reviews" class="container tab-pane fade">
+                                         {% for comment in comments %}
+                                        <div style="text-align:right;" class="reviews-submitted">
+                                            <div  style="text-align:right;"class="reviewer">   {{ comment.user.full_name }} <span> (  {{ comment.created_on }})</span></div>
+
+                                        <div   style="float:right;" class="product-rating">
+                                          <i  style="color:#FFD700;" class="fa fa-star{% if comment.rate < 1%}-o empty{% endif%}"></i>
+                                           <i style="color:#FFD700; "class="fa fa-star{% if comment.rate < 2%}-o empty{% endif%}"></i>
+                                           <i style="color:#FFD700;" class="fa fa-star{% if comment.rate < 3%}-o empty{% endif%}"></i>
+                                          <i style="color:#FFD700;" class="fa fa-star{% if comment.rate < 4%}-o empty{% endif%}"></i>
+                                         <i style="color:#FFD700;"class="fa fa-star{% if comment.rate < 5%}-o empty{% endif%}"></i>
+                                           <small> ( {{ comment.rate |stringformat:".2f"}})</small>
+                                      </div>
+                                            <br>
+                                       {{ comment.body | linebreaks }}
+                                        </div>
+                                        <hr>
+                                         {% endfor %}
+                                        <div class="reviews-submit">
+                                            {% if new_comment %}
+                                            <div class="alert alert-success" role="alert">
+                                              Your comment is awaiting moderation
+                                            </div>
+                                         {% else %}
+                             <h3>نظر خود را بگذارید</h3>
+                             <form method="post" style="margin-top: 1.3em;">
+                              {{ comment_form.as_p }}
+                                {% csrf_token %}
+                                 <button type="submit" class="btn btn-primary  btn-lg">ثبت</button>
+                                 </form>
+                                     {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+        <!-- Brand End -->
+
+   {% endblock content %}

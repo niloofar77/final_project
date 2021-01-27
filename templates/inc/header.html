@@ -12,9 +12,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <div class="col-md-1">
                         <div  class="user">
-                          <a  href="./accounts/profile"><i class="fa fa-user fa-lg"></i></a>
+                          <a  href="{% url 'accounts:view_profile_with_pk' %}"><i class="fa fa-user fa-lg"></i></a>
                             <i class="fas fa-grip-lines-vertical"></i>
-                            <a href="{% url 'cart:show'%}">
+                            <a href="{% url 'cart:detail'%}">
                                 <i class="fa fa-shopping-cart fa-lg"></i>
                             </a>
 
