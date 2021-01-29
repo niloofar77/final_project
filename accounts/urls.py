@@ -15,4 +15,5 @@ urlpatterns = [
 	path('password/', views.user_password, name='user_password'),
 	path('faq/', views.faq, name='faq'),
 
+
 ]

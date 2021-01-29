@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load shop_extras %}
 {% block content %}
 <title>Profile</title>
 <div class="container">
@@ -16,10 +16,10 @@
     <p>بیو:
         {{ profile.bio }}</p>
     <p> تلفن:
-        {{ profile.phone }}
+        {{ profile.phone |persian_int}}
         </p>
      <p>سن:
-         {{profile.age}}</p>
+         {{profile.age|persian_int}}</p>
     {% if profile.image %}
     <img src="{{ user.userprofile.image.url }}" width="240">
     {% endif %}

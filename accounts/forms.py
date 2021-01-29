@@ -2,6 +2,8 @@ from django import forms
 from .models import User
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import Profile
+from django import forms
+from captcha.fields import CaptchaField
 
 class UserCreationForm(forms.ModelForm):
 	password1 = forms.CharField(label='password', widget=forms.PasswordInput)
@@ -45,6 +47,7 @@ class UserRegistrationForm(forms.Form):
 	email = forms.EmailField(label="ایمیل",label_suffix='',widget=forms.EmailInput(attrs={'class': 'form-control'}))
 	full_name = forms.CharField(label="نام و نام خانوادگی",label_suffix='',widget=forms.TextInput(attrs={'class':'form-control'}))
 	password = forms.CharField(label="رمز عبور",label_suffix='',widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+	captcha = CaptchaField(label="",label_suffix='')
 
 class ContactForm(forms.Form):
 	full_name = forms.CharField(label="نام و نام خانوادگی",label_suffix='',widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -55,10 +58,11 @@ class ContactForm(forms.Form):
 class EditProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ('bio', 'age')
+		fields = ('bio', 'age','phone')
 		labels = {
 			'bio': ('بیو'),
-			'age':('سن')
+			'age':('سن'),
+			'phone':('تلفن')
 		}
 
 

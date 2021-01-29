@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'sorl.thumbnail',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'captcha'
 ]
 
 MIDDLEWARE = [
