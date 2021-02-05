@@ -18,7 +18,7 @@ class AddCommentForm(forms.ModelForm):
 		}
 		labels = {
 			'body': ('متن'),
-			'rate': ('امتیاز')
+			'rate': ('رتبه')
 		}
 
 		error_messages = {

@@ -68,7 +68,7 @@ class EditProfileForm(forms.ModelForm):
 
 
 class PhoneLoginForm(forms.Form):
-	phone = forms.IntegerField()
+	phone = forms.IntegerField(label="تلفن",label_suffix='')
 
 	def clean_phone(self):
 		phone = Profile.objects.filter(phone=self.cleaned_data['phone'])
@@ -78,6 +78,6 @@ class PhoneLoginForm(forms.Form):
 
 
 class VerifyCodeForm(forms.Form):
-	code = forms.IntegerField()
+	code = forms.IntegerField(label="کد",label_suffix='')
 
 

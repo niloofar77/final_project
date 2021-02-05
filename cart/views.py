@@ -5,6 +5,8 @@ from shop.models import Product, Category
 from .forms import CartAddForm
 from django.views.decorators.http import require_POST
 from shop.models import Bookmark
+from decimal import Decimal as D
+from django.db.models import Max
 from django.contrib.auth.models import AbstractBaseUser
 
 def detail(request):
@@ -29,15 +31,13 @@ def cart_remove(request, product_id):
 
 
 def bookmark_add(request , product_id):
-
 	product_find = get_object_or_404(Product, id=product_id)
-	bookmark_find = Bookmark.objects.get(product = product_find , user = request.user)
-	bookmark_find.active =True
+	bookmark_find=Bookmark.objects.create(product = product_find ,user = request.user )
 	bookmark_find.save()
 	bookmarks = {
 		'bookmarks': Bookmark.objects.filter(user=request.user, active =True),
 	}
-	print(bookmark_find)
+	# print(bookmark_find)
 
 	return  render(request,'cart/wishlist2.html',bookmarks)
 
@@ -66,8 +66,16 @@ def search(request):
 	search_post = request.GET.get('search')
 	resaults= Product.objects.filter(Q(name=search_post))
 	return render(request, 'cart/search.html', {'resaults': resaults})
-
-
+# def search_price(request):
+# 	print("cccc")
+# 	price1 = D(request.GET.get('min_price', 0))
+# 	price2 = D(request.GET.get('max_price', 0))
+#
+# 	if not price2:
+# 		price2 = Product.objects.aggregate(Max('price'))['price__max']
+#
+# 	resaults= Product.objects.filter(price__range=(price1, price2))
+# 	return render(request, 'cart/search.html', {'resaults': resaults})
 
 
 def about(request):

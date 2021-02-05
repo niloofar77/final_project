@@ -14,6 +14,9 @@ urlpatterns = [
 	path('contact/',views.contact,name='contact'),
 	path('password/', views.user_password, name='user_password'),
 	path('faq/', views.faq, name='faq'),
+	path('phone_login/', views.phone_login, name='phone_login'),
+	path('verify/<str:phone>/<int:rand_num>/', views.verify, name='verify')
+
 
 
 ]

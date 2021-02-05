@@ -4,19 +4,24 @@
         <div class="login">
             <div class="container-fluid">
                     <div  style="margin-bottom:30px" class="  col-sm-9 col-md-7 col-lg-5 mx-auto">
+
                         <div class="login-form">
+                               <h3> ورود</h3>
                   <form  action="" method="post">
                    {% csrf_token %}
                  {{ form.as_p}}
 
 <!--                                       <a class=" nav-link" href="">بازیابی رمز عبور</a>-->
 
-                     <a  style="margin-top:20px;"href="{% url 'accounts:user_password'%}">بازیابی رمز عبور</a>
+
+                      <br>
+                        <a  href="{% url 'accounts:phone_login'%}">ورود با  شماره تلفن </a>
                       <br>
                       <br>
                       <button type="submit" class="btn btn-primary btn-lg"  value="Login"> ورود</button>
 
                        <p style="margin-top:20px;"> حساب کاربری ندارید؟<a href="{% url 'accounts:register'%}">ثبت نام کنید</a></p>
+
 
 
                 </form>

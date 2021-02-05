@@ -34,7 +34,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	bio = models.TextField( null=True, blank=True)
 	age = models.PositiveSmallIntegerField(null=True, blank=True)
-	phone = models.CharField(null=True, blank=True,max_length=100)
+	phone = models.PositiveIntegerField(null=True, blank=True)
 
 class Contact(models.Model):
 	email = models.EmailField(max_length=100, unique=True)

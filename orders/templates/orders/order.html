@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3 style="margin-left:10px;">Checkout</h3>
+ <div style="margin-bottom:190px;" class="coupon">
 
-    <p style="margin-left:10px;">Total: {{ order.get_total_price }}</p><br/>
+    <p style="margin-left:10px; margin-top: 20px"> {{ order.get_total_price }}مجموع </p><br/>
 
     <form  style="margin-left:10px;" action="{% url 'orders:coupon_apply' order.id %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input style="margin-left:10px;" type="submit" value="Apply">
+        <input  class="btn btn-primery" style="margin-left:10px;" type="submit" value="اعمال">
     </form>
 
     <br/>
-    <a  style="margin-left:30px; margin-bottom:30px" href="{% url 'orders:payment' order.id order.get_total_price %}" class="btn btn-primary">Pay</a>
+
+    <a  class="btn btn-primery" style="margin-left:30px; margin-bottom:30px" href="{% url 'orders:payment' order.id order.get_total_price %}">پرداخت</a>
+
+ </div>
 {% endblock %}
